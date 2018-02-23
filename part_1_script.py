@@ -131,21 +131,22 @@ def main():
     last_year = life_exp_income_clean.tail(1).index.item()
 
     # Findings paragraph
-    paragraph = '''Data from the World Bank World Development Indicators dataset shows life
-expectancy for both men and women has been steadily improving over the
-period 1960-{0}, irrespective of income group, with biggest increases
-in Upper Middle income economies. Income group does, however, have a
-very strong correlation with life expectancy, with high income economies
-showing life expectancies almost 20 years longer than low income
-economies for both men and women in {0}. This is an improvement over the
-situation in 1960, where the gap between men in high income economies
-and those in low income economies was 28 years, and 30 years for women.
-Within income groups, the rate of growth in life expectancy for men and
-women appear to have been similar since 1960, as evidenced by the
-consistent gaps shown between men and women in all groups other than
-Lower Middle income economies in the graph below. In this income group,
-the gap in life expectancy between men and women is slowly widening,
-from 1.3 years in 1960 to 3.7 years in {0}.
+    paragraph = '''Time-series data of  male and  female life expectancy obtained from the World Bank World
+Development Indicators dataset and  visualized by income  group shows life expectancy for
+both men and women has been steadily improving over the period 1960-{0}, irrespective
+of  income  group,  with  biggest  increases  in  Upper  Middle income  economies. Overall,
+income  group  has  a  very  strong  correlation  with  life  expectancy, with  high  income
+economies  showing  life  expectancies  almost  20 years  longer  than  low income economies
+for both men and women in {0}. This is an improvement over the situation in 1960, where
+the gap between men in high income economies and those in low income economies was 28
+years,  and  30 years  for  women.  Across  all  income  groups,  women  have  higher  life
+expectancy than men with more pronounced gaps in higher income economies, possibly due
+to  better  maternal  mortality  rates.  Within  income  groups,  male  and  female  life
+expectancy  growth  rates  appear  to  have  been similar since 1960,  as evidenced by the
+consistent  gaps  shown  between  men and  women in all  groups  other than  Lower Middle
+income  economies  in  the graph below. In this income group, the  gap in  life expectancy
+between  men and  women is  slowly  widening,  from 1.3 years  in 1960 to 3.7 years in {0}.
+This potentially shows the impact of slowly improving maternal healthcare in these economies.
 '''.format(last_year)
 
     # Setup data for plotting. The graph will plot a time-series of Life Expectancies for Male and Female for each
@@ -165,7 +166,7 @@ from 1.3 years in 1960 to 3.7 years in {0}.
     fig = plot_graph(life_exp_income_clean, life_exp_income_clean.index, series_data, series_labels, graph_title)
     plt.suptitle(ttl, y=0.95, fontsize=20)
     # Add the paragraph text
-    fig.text(0.1, 0.65, paragraph, ha='left', va='bottom')
+    fig.text(0.1, 0.90, paragraph, ha='left', va='top', fontsize=10)
     # Add source information
     fig.text(0.2, 0.03, 'Source: World Development Indicators, The World Bank', color=title_color, size=8)
     # Save the output as a PDF file
